@@ -30,8 +30,19 @@ from WP :
 
 It looks like to be the most important tables to look at. Maybe some wont be needed.
 
-[...**PROGRESSION**...]
+I did a small php script to get datas from WP DB.
 
+Next steps are :
+- Read both WP and CMSMS DB
+- Write into WP and CMSMS DB
+- Analyse both table to find links
+- Configure the script to copy from a DB into the other DB 
+
+Warning :
+- Check relative url of pics
+
+To include :
+- How to make DB save from MySQL
 
 ---
 
