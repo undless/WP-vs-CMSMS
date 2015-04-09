@@ -21,7 +21,7 @@ if($_POST['dbconnexion_dbadress'] && $_POST['dbconnexion_dbname'] && $_POST['dbc
 	$ready=true;
 	try
 	{
-		$dbadress = ($_POST['dbconnexion_dbadress']);
+		$dbadress = securite_bdd($_POST['dbconnexion_dbadress']);
 		$dbname = securite_bdd($_POST['dbconnexion_dbname']);
 		$username = securite_bdd($_POST['dbconnexion_username']);
 		$pwd = securite_bdd($_POST['dbconnexion_pwd']);
