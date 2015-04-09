@@ -9,7 +9,7 @@ function securite_bdd($string)
 	}
 	else
 	{
-		$string = mysql_real_escape_string($string);
+		//$string = mysql_real_escape_string($string);
 		$string = addcslashes($string, '%_');
 	}
 	return $string;
@@ -21,11 +21,11 @@ if($_POST['dbconnexion_dbadress'] && $_POST['dbconnexion_dbname'] && $_POST['dbc
 	$ready=true;
 	try
 	{
-		$dbadress = securite_bdd($_POST['dbconnexion_dbadress']);
+		$dbadress = ($_POST['dbconnexion_dbadress']);
 		$dbname = securite_bdd($_POST['dbconnexion_dbname']);
 		$username = securite_bdd($_POST['dbconnexion_username']);
 		$pwd = securite_bdd($_POST['dbconnexion_pwd']);
-		$bdd = new PDO("mysql:host='$dbadress';dbname='$dbname'", "'$username'", "'$pwd'", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+		$bdd = new PDO("mysql:host=$dbadress;dbname=$dbname", $username, $pwd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 	}
 	catch (Exception $e)
 	{
@@ -34,6 +34,9 @@ if($_POST['dbconnexion_dbadress'] && $_POST['dbconnexion_dbname'] && $_POST['dbc
 	$reponse = $bdd->query("SELECT post_title,post_content FROM wp_posts ORDER BY ID");
 }
 ?>
+
+
+
 
 
 <!DOCTYPE html>
