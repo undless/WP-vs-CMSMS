@@ -1,14 +1,31 @@
 <?php
+
+// Secure data from the form
+function securite_bdd($string)
+{
+	if(ctype_digit($string))
+	{
+		$string = intval($string);
+	}
+	else
+	{
+		$string = mysql_real_escape_string($string);
+		$string = addcslashes($string, '%_');
+	}
+	return $string;
+}
+
+
 $ready=false;
 if($_POST['dbconnexion_dbadress'] && $_POST['dbconnexion_dbname'] && $_POST['dbconnexion_username'] && $_POST['dbconnexion_pwd']){
 	$ready=true;
 	try
 	{
-		$dbadress = $_POST['dbconnexion_dbadress'];
-		$dbname = $_POST['dbconnexion_dbname'];
-		$username = $_POST['dbconnexion_username'];
-		$pwd = $_POST['dbconnexion_pwd'];
-		$bdd = new PDO("mysql:host=$dbadress;dbname=$dbname", $username, $pwd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+		$dbadress = securite_bdd($_POST['dbconnexion_dbadress']);
+		$dbname = securite_bdd($_POST['dbconnexion_dbname']);
+		$username = securite_bdd($_POST['dbconnexion_username']);
+		$pwd = securite_bdd($_POST['dbconnexion_pwd']);
+		$bdd = new PDO("mysql:host='$dbadress';dbname='$dbname'", "'$username'", "'$pwd'", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 	}
 	catch (Exception $e)
 	{
