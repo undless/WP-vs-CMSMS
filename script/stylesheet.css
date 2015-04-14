@@ -2,6 +2,81 @@ body{
 	font-family: sans-serif;
 	font-size: 0.9em;
 }
+
+.form{
+	padding: 50px 0;
+	width: 90%;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+	.fromDB,
+	.toDB{
+		border: 1px solid #ddd;
+		border-radius: 2px;
+		padding: 20px;
+		position: relative;
+	}
+	.toDB{
+		margin-top: 50px;
+	}
+		.fromDB::before,
+		.toDB::before{
+			position: absolute;
+			font-weight: bold;
+			font-size: 0.8em;
+			padding: 0 5px;
+			color: #ddd;
+			background-color: #FFF;
+			top: -5px;
+			left: 10px;
+		}
+		.fromDB::before{
+			content: "FROM";
+		}
+		.toDB::before{
+			content: "TO";
+		}
+
+		.formLine{
+			display: inline-block;
+			vertical-align: top;
+			width: 23%;
+			margin: 0 1%;
+		}
+			label{
+				display: block;
+				color: #aaa;
+				font-size: 0.9em;
+			}
+			input{
+				border:1px solid #aaa;
+				border-radius: 2px;
+				padding: 8px;
+				width: 100%;
+				-webkit-box-sizing:border-box;
+				-moz-box-sizing:border-box;
+				box-sizing:border-box;
+			}
+
+		.formActionLine{
+			text-align: right;
+			padding: 10px 1% 0;
+		}
+			.btn{
+				border-radius: 2px;
+				background-color: #444;
+				color: #FFF;
+				padding: 8px 12px;
+				border:0;
+				cursor: pointer;
+			}
+				.btn:hover,
+				.btn:focus{
+					background-color: #222;
+				}
+
+
+
 .results{
 	position: relative;
 	width: 90%;

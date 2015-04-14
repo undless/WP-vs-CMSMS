@@ -17,14 +17,14 @@ function securite_bdd($string)
 
 
 $ready=false;
-if($_POST['dbconnexion_dbadress'] && $_POST['dbconnexion_dbname'] && $_POST['dbconnexion_username'] && $_POST['dbconnexion_pwd']){
+if($_POST['dbconnexion_dbadress_from'] && $_POST['dbconnexion_dbname_from'] && $_POST['dbconnexion_username_from'] && $_POST['dbconnexion_pwd_from']){
 	$ready=true;
 	try
 	{
-		$dbadress = securite_bdd($_POST['dbconnexion_dbadress']);
-		$dbname = securite_bdd($_POST['dbconnexion_dbname']);
-		$username = securite_bdd($_POST['dbconnexion_username']);
-		$pwd = securite_bdd($_POST['dbconnexion_pwd']);
+		$dbadress = securite_bdd($_POST['dbconnexion_dbadress_from']);
+		$dbname = securite_bdd($_POST['dbconnexion_dbname_from']);
+		$username = securite_bdd($_POST['dbconnexion_username_from']);
+		$pwd = securite_bdd($_POST['dbconnexion_pwd_from']);
 		$bdd = new PDO("mysql:host=$dbadress;dbname=$dbname", $username, $pwd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 	}
 	catch (Exception $e)
@@ -70,38 +70,58 @@ if($_POST['dbconnexion_dbadress'] && $_POST['dbconnexion_dbname'] && $_POST['dbc
 		<?php }else{ ?>
 
 			<form id="dbconnexion" method="post" action="index.php" class="form">
-				<label for="dbconnexion_dbadress">DataBase Adress</label>
-				<input type="text" placeholder="" id="dbconnexion_dbadress" name="dbconnexion_dbadress" required>
-
-				<label for="dbconnexion_dbname">DataBase Name</label>
-				<input type="text" placeholder="" id="dbconnexion_dbname" name="dbconnexion_dbname" required>
-
-				<label for="dbconnexion_username">User Name</label>
-				<input type="text" placeholder="" id="dbconnexion_username" name="dbconnexion_username" required>
-
-				<label for="dbconnexion_pwd">Password</label>
-				<input type="password" placeholder="" id="dbconnexion_pwd" name="dbconnexion_pwd" required>
-
-				<button type="submit">Envoyer</button>
+				<div class="fromDB">
+					<div class="formLine">
+						<label for="dbconnexion_dbadress_from">DataBase Adress</label>
+						<input type="text" placeholder="" id="dbconnexion_dbadress_from" name="dbconnexion_dbadress_from" required>
+					</div><!--
+					--><div class="formLine">
+						<label for="dbconnexion_dbname_from">DataBase Name</label>
+						<input type="text" placeholder="" id="dbconnexion_dbname_from" name="dbconnexion_dbname_from" required>
+					</div><!--
+					--><div class="formLine">
+						<label for="dbconnexion_username_from">User Name</label>
+						<input type="text" placeholder="" id="dbconnexion_username_from" name="dbconnexion_username_from" required>
+					</div><!--
+					--><div class="formLine">
+						<label for="dbconnexion_pwd_from">Password</label>
+						<input type="password" placeholder="" id="dbconnexion_pwd_from" name="dbconnexion_pwd_from" required>
+					</div><!--
+					--><div class="formActionLine">
+						<button type="submit" class="btn">Envoyer</button>
+					</div>
+				</div>
+				<div class="toDB"></div>
 			</form>
+			<div id="reset" class="btn">Reset</div>
 
 
 			<script type="text/javascript">
 
-				if(localStorage.getItem("dbconnexion_dbadress") ){
-					document.getElementById("dbconnexion_dbadress").value = localStorage.getItem("dbconnexion_dbadress");
-				}
-				if(localStorage.getItem("dbconnexion_dbname") ){
-					document.getElementById("dbconnexion_dbname").value = localStorage.getItem("dbconnexion_dbname"); 
-				}
-				if(localStorage.getItem("dbconnexion_username") ){
-					document.getElementById("dbconnexion_username").value = localStorage.getItem("dbconnexion_username"); 
-				}
-				
-				document.getElementById("dbconnexion").addEventListener("submit", function(event) {
-					localStorage.setItem("dbconnexion_dbadress", document.getElementById("dbconnexion_dbadress").value);
-					localStorage.setItem("dbconnexion_dbname", document.getElementById("dbconnexion_dbname").value);
-					localStorage.setItem("dbconnexion_username", document.getElementById("dbconnexion_username").value);
+				var i = 0;
+				var localStorageKey = "";
+
+				/* Get localStorage */
+				for (i = 0; i < localStorage.length; i++) {
+					localStorageKey = localStorage.key(i);
+					if (document.getElementById(localStorageKey)) {
+						document.getElementById(localStorageKey).value = localStorage.getItem(localStorageKey);
+					};
+				};
+
+				/* Set localStorage */
+				var inputList = document.getElementById("dbconnexion").getElementsByTagName("input");
+				for (i = 0; i < inputList.length ; i++) {
+					inputList[i].addEventListener("focusout", function(event) {
+						localStorage.setItem(this.name, document.getElementById(this.name).value);
+					});
+				};
+
+				/* Clear localStorage */
+				var reset = document.getElementById("reset");
+				reset.addEventListener("click", function(event) {
+					localStorage.clear();
+					console.log("localStorage Cleaned")
 				});
 
 			</script>
