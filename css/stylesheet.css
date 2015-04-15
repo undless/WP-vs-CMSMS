@@ -1,6 +1,7 @@
 /*
 PLTTS http://pltts.me/palettes/629637
 */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 body{
 	font-family: sans-serif;
@@ -26,9 +27,9 @@ body{
 	.toDB{
 		margin-top: 20px;
 	}
-		.fromDB::before,
-		.toDB::before{
+		.dbType{
 			position: absolute;
+			text-transform: uppercase;
 			font-weight: bold;
 			font-size: 0.8em;
 			padding: 0 5px;
@@ -36,12 +37,6 @@ body{
 			background-color: #FFF;
 			top: -5px;
 			left: 10px;
-		}
-		.fromDB::before{
-			content: "FROM";
-		}
-		.toDB::before{
-			content: "TO";
 		}
 
 		.formLine{
@@ -58,6 +53,7 @@ body{
 			}
 				label::before{
 					color:#FE4365;
+					font-size: 0.9em;
 				}
 
 			input{
@@ -99,24 +95,25 @@ body{
 			}
 
 
-.results{
+.results table{
+	width: 100%;
 }
-	.post{
+	.results tr{
 		position: relative;
-		padding: 10px;
 		border-bottom: 1px solid #fff;
 		background-color: #f8f8f8;
 	}
-	.post:hover,
-	.post:focus{
+	.results tr:hover,
+	.results tr:focus{
 		background-color: #eee;
 	}
-		.post-title{
+		.results th{
+			padding: 10px;
 			font-weight: bold;
+			text-align: left;
+			background-color: #eee;
 		}
-		.post-content{
+		.results td{
+			padding: 10px;
 			color: #888;
-			font-size: 0.8em;
-			font-style:italic;
-			padding: 5px 0 0 10px;
 		}

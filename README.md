@@ -1,38 +1,38 @@
 # WP-vs-CMSMS
 
-Article transfert between **CMS Made Simple** (CMSMS) and **WordPress** (WP)
+Analysis & transfert between **CMS Made Simple** (CMSMS) and **WordPress** (WP) DataBases.
 
-> **This is a study of how to transfert articles from a CMS to the other one. It's NOT finnished, it's PROGRESSING. I'll use this page as a report untill i have a final solution.**
+> WORK IN PROGRESS...
 
-## From CMSMS to WP
+## WP DB Analysis
 
-### 0 - Context
+Intresting tables :
 
-Start with an "old" CMSMS full of articles
-Start with a fresh WP empty
+- wp_posts.sql
+	- ID
+	- post_date_gmt
+	- post_title
+	- post_type
+	- post_status
+	- post_name
+	- post_content
+- wp_term_relationships.sql
+- wp_term_taxonomy.sql
+- wp_terms.sql
 
-Both use a MySQL DB storage.
+## CMSMS DB Analysis
 
-### 1 - Extraction of DataBase tables
+Intresting tables :
 
-from CMSMS :
 - cms_module_news.sql
 - cms_module_news_categories.sql
 - cms_module_news_fielddefs.sql
 - cms_module_news_fieldvals.sql
 - cms_users.sql
 
-from WP :
-- wp_posts.sql
-- wp_term_relationships.sql
-- wp_term_taxonomy.sql
-- wp_terms.sql
+## TO DO LIST
 
-It looks like to be the most important tables to look at. Maybe some wont be needed.
-
-I did a small php script to get datas from WP DB.
-
-Next steps are :
+Next steps :
 - Read both WP and CMSMS DB
 - Write into WP and CMSMS DB
 - Analyse both table to find links
@@ -42,7 +42,7 @@ Warning :
 - Check relative url of pics
 
 To include :
-- How to make DB save from MySQL
+- TUTO : How to make a DB DUMP from MySQL
 
 ---
 

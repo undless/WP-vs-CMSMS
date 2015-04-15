@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<meta content="initial-scale=1" name="viewport">
+
+		<link href="css/font.css" type="text/css" rel="stylesheet">
+		<link href="css/stylesheet.css" type="text/css" rel="stylesheet">
+
+		<script src="js/javascript.js"></script>
+		<title>Link to DB</title>
+	</head>
+	<body>
+		<form id="dbconnexion" method="post" action="index.php" class="max-width form">
+			<div id="fromDB" class="fromDB">
+				<div class="dbType">From</div>
+				<div class="formLine">
+					<label for="dbconnexion_dbadress_from" class="icon-server">DataBase Server</label>
+					<input type="text" placeholder="" id="dbconnexion_dbadress_from" name="dbconnexion_dbadress_from" required />
+				</div><!--
+				--><div class="formLine">
+					<label for="dbconnexion_dbname_from" class="icon-tag">DataBase Name</label>
+					<input type="text" placeholder="" id="dbconnexion_dbname_from" name="dbconnexion_dbname_from" required />
+				</div><!--
+				--><div class="formLine">
+					<label for="dbconnexion_username_from" class="icon-head">User Name</label>
+					<input type="text" placeholder="" id="dbconnexion_username_from" name="dbconnexion_username_from" required />
+				</div><!--
+				--><div class="formLine">
+					<label for="dbconnexion_pwd_from" class="icon-lock">Password</label>
+					<input type="password" placeholder="" id="dbconnexion_pwd_from" name="dbconnexion_pwd_from" required />
+				</div>
+			</div>
+			<div class="toDB">
+				<div class="dbType">To</div>
+				unused
+			</div>
+			<div class="formActionLine">
+				<div id="reset" class="btn btn-reset icon-trash">Clear</div>
+				<div id="submit" class="btn btn-main icon-cloud-download">Download</div>
+			</div>
+
+			<div id="table" class="results"></div>
+		</form>
+	</body>
+</html>
